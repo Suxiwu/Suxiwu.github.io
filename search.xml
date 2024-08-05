@@ -29,4 +29,16 @@
 <p>从此以后，莉莉成为了森林的英雄，她的故事被代代相传，成为了勇气和友情的象征。</p>
 ]]></content>
   </entry>
+  <entry>
+    <title>常见的cmd命令</title>
+    <url>/2024/08/05/%E5%B8%B8%E8%A7%81%E7%9A%84cmd%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<p>win+r打开cmd</p>
+<p>注意：</p>
+<p>（1）dir会显示当前目录下所有的文件、文件夹（包括隐藏的文件、文件夹）</p>
+<p>（2）tab键：自动补全（不必打出完整的文件名）</p>
+]]></content>
+      <tags>
+        <tag>java学习</tag>
+      </tags>
+  </entry>
 </search>
