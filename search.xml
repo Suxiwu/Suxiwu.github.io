@@ -1,6 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>计算机中的数据存储</title>
+    <url>/2024/08/07/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/</url>
+    <content><![CDATA[<p><strong>在计算机中，任意数据都是以二进制形式来存储</strong></p>
+<p>1.二进制：逢二进一，借一当二</p>
+<p>2.常见的进制：</p>
+<p>（1）二进制：由0、1组成，代码中以<u>0b</u>开头</p>
+<p>（2）十进制：由0~9组成，默认十进制，<u>不用加任何前缀</u></p>
+<p>（3）八进制：由0~7组成，代码中以<u>0</u>开头</p>
+<p>（4）十六进制：由0<del>9和a</del>f组成【a&#x3D;10、b&#x3D;11、c&#x3D;12、d&#x3D;13、e&#x3D;14、f&#x3D;15】，代码中以<u>0x</u>开头</p>
+<p>3.计算机使用二进制存储数据的原因</p>
+<p>只用两种状态就能表示二进制。在之前是纸带有孔和无孔，现在是高压电流和低压电流（大于3.3V定为1，小于3.3V定为0）</p>
+<p>4.进制转换</p>
+<p>（1）任意进制转十进制</p>
+<p><img src="/../imgs/$%7Bfiilename%7D/1.jpg" alt="1"></p>
+<p><img src="/../imgs/$%7Bfiilename%7D/2.jpg" alt="2"></p>
+<p><img src="/../imgs/$%7Bfiilename%7D/3.jpg" alt="3"></p>
+<p>（2）十进制转其他进制</p>
+<p><img src="/../imgs/$%7Bfiilename%7D/4.jpg" alt="4"></p>
+<p>【电脑上的计算器可以直接进行进制转换的计算】</p>
+<hr>
+<p>【补充】</p>
+<p>显示器中的三个知识点：分辨率、像素、三原色</p>
+<p>1.电脑显示器：如2k屏、4k屏（这个指的是最大分辨率）</p>
+<p><img src="/../imgs/$%7Bfiilename%7D/7.jpg" alt="7"></p>
+<p>以1920*1080为例：</p>
+<p>显示器宽1920个小格子，高1080个小格子，每一个小方格称为一个像素。如下图所示：</p>
+<p><img src="/../imgs/$%7Bfiilename%7D/8.jpg" alt="8"></p>
+<p>如设计软件时，规定软件大小，通常以像素为单位</p>
+<hr>
+<p><strong>计算机中的数据一般分为三类：Text文本、Image图片、Sound声音（视频&#x3D;图片+声音）</strong></p>
+<p>1.Text文本数据：包括数字、字母、汉字</p>
+<p>（1）数字：十进制数字通过进制转换，转换成二进制数字存储</p>
+<p>（2）字母：通过ASCII码表转换成十进制数，再转换成二进制数存储</p>
+<p><img src="/../imgs/$%7Bfiilename%7D/5.jpg" alt="5"></p>
+<p>（3）汉字：同样是通过码表进行转换</p>
+<p><img src="/../imgs/$%7Bfiilename%7D/6.jpg" alt="6"></p>
+<p>2.Image图片数据：分为黑白图、灰度图、彩色图三种</p>
+<p>（2）黑白图</p>
+<p><img src="/../imgs/$%7Bfiilename%7D/9.jpg" alt="9"></p>
+<p>其中，1表示白色，0表示黑色。黑白图&#x3D;按照这个规则给每一个像素点填充颜色</p>
+<p>（3）灰度图</p>
+<p><img src="/../imgs/$%7Bfiilename%7D/10.jpg" alt="10"></p>
+<p>灰度表中，0&#x3D;纯黑，255&#x3D;纯白，0~255不同数值代表不同程度的灰色</p>
+<p>（3）彩色图</p>
+<p>a.计算机中的三原色：红、绿、蓝(也称为RGB，取red&#x2F;green&#x2F;blue首字母)</p>
+<p>可在0~255（10进制）范围内给三原色设置不同的值，如此可搭配出不同的颜色</p>
+<p><img src="/../imgs/$%7Bfiilename%7D/11.jpg" alt="11"></p>
+<p>也可用十六进制来表示（FF&#x3D;255）</p>
+<p><img src="/../imgs/$%7Bfiilename%7D/12.jpg" alt="12"></p>
+<p>3.Sound声音数据</p>
+<p>涉及声音的波形图，每一个取样点都有与之相对应的数字。</p>
+<p>音质越好，说明取样的点越密集</p>
+<p><img src="/../imgs/$%7Bfiilename%7D/13.jpg" alt="13"></p>
+]]></content>
+      <tags>
+        <tag>乱七八糟</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>常用的cmd命令</title>
     <url>/2024/08/07/%E5%B8%B8%E7%94%A8%E7%9A%84cmd%E5%91%BD%E4%BB%A4/</url>
     <content><![CDATA[<p>win+r打开cmd</p>
