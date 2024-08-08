@@ -9,5 +9,5 @@ http://example.com/archives/index.html
 http://example.com/tags/index.html
 http://example.com/categories/index.html
 http://example.com/
-http://example.com/tags/Java%E5%AD%A6%E4%B9%A0/
 http://example.com/tags/%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F/
+http://example.com/tags/Java%E5%AD%A6%E4%B9%A0/
