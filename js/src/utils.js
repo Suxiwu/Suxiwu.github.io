@@ -14,7 +14,7 @@ NexT.utils = NexT.$u = {
         var $imageWrapLink = $image.parent('a');
 
         if ($imageWrapLink.size() < 1) {
-          var imageLink = ($image.attr('data-original')) ? this.getAttribute('data-original') : this.getAttribute('src');
+	        var imageLink = ($image.attr('data-original')) ? this.getAttribute('data-original') : this.getAttribute('src');
           $imageWrapLink = $image.wrap('<a href="' + imageLink + '"></a>').parent('a');
         }
 
@@ -24,7 +24,7 @@ NexT.utils = NexT.$u = {
         if (imageTitle) {
           $imageWrapLink.append('<p class="image-caption">' + imageTitle + '</p>');
 
-          // Ensure img title tag will show correctly in fancybox
+          //make sure img title tag will show correctly in fancybox
           $imageWrapLink.attr('title', imageTitle);
         }
       });
@@ -52,7 +52,7 @@ NexT.utils = NexT.$u = {
   registerTabsTag: function () {
     var tNav = '.tabs ul.nav-tabs ';
 
-    // Binding `nav-tabs` & `tab-content` by real time permalink changing.
+    // Binding nav-tabs & tab-content by real time permalink changing.
     $(function() {
       $(window).bind('hashchange', function() {
         var tHash = location.hash;
@@ -68,7 +68,7 @@ NexT.utils = NexT.$u = {
       // Prevent selected tab to select again.
       if(!$(this).hasClass('active')){
 
-        // Add & Remove active class on `nav-tabs` & `tab-content`.
+        // Add & Remove active class on nav-tabs & tab-content.
         $(this).addClass('active').siblings().removeClass('active');
         var tActive = $(this).find('a').attr('href');
         $(tActive).addClass('active').siblings().removeClass('active');
@@ -151,6 +151,7 @@ NexT.utils = NexT.$u = {
             left: '0'
           });
 
+
         // Wrap the iframe in a new <div> which uses a dynamically fetched padding-top property
         // based on the video's w/h dimensions
         var wrap = document.createElement('div');
@@ -194,7 +195,7 @@ NexT.utils = NexT.$u = {
   },
 
   /**
-   * Add `menu-item-active` class name to menu item
+   * Add menu-item-active class name to menu item
    * via comparing location.path with menu item's href.
    */
   addActiveClassToMenuItem: function () {
@@ -230,7 +231,7 @@ NexT.utils = NexT.$u = {
    * @returns {string|void|XML|*}
    */
   escapeSelector: function (selector) {
-    return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, '\\$&');
+    return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^{|}~]/g, '\\$&');
   },
 
   displaySidebar: function () {
@@ -265,42 +266,40 @@ NexT.utils = NexT.$u = {
   getContentVisibilityHeight: function () {
     var docHeight = $('#content').height(),
         winHeight = $(window).height(),
-        contentVisibilityHeight = (docHeight > winHeight) ? (docHeight - winHeight) : ($(document).height() - $(window).height());
-
+        contentVisibilityHeight = (docHeight > winHeight) ? (docHeight - winHeight) : ($(document).height() - winHeight);
     return contentVisibilityHeight;
   },
 
-  // Fix TOC jump issue
-  fixTOCJump: function () {
-    const navItems = document.querySelectorAll('.post-toc li');
-    const sections = [...navItems].map(element => {
-      var link = element.querySelector('a.nav-link');
-      var target = document.getElementById(link.getAttribute('href').replace('#', '')); // 去掉 decodeURI
-      // TOC item animation navigate.
-      link.addEventListener('click', event => {
-        event.preventDefault();
-        var target = document.getElementById(decodeURI(event.currentTarget.getAttribute('href')).replace('#', '')); // 添加 decodeURI
-        if (target) {
-          var offset = target.getBoundingClientRect().top + window.scrollY;
-          window.anime({
-            targets  : document.scrollingElement,
-            scrollTop: offset + 10
-          });
-        }
-      });
-      return target; // 直接返回 target
-    });
+  getSidebarb2tHeight: function () {
+    //var sidebarb2tHeight = (CONFIG.sidebar.b2t) ? document.getElementsByClassName('back-to-top')[0].clientHeight : 0;
+    var sidebarb2tHeight = (CONFIG.sidebar.b2t) ? $('.back-to-top').height() : 0;
+    //var sidebarb2tHeight = (CONFIG.sidebar.b2t) ? 24 : 0;
+    return sidebarb2tHeight;
+  },
 
-    var tocElement = document.querySelector('.post-toc-wrap');
+  getSidebarSchemePadding: function () {
+    var sidebarNavHeight = ($('.sidebar-nav').css('display') == 'block') ? $('.sidebar-nav').outerHeight(true) : 0,
+        sidebarInner = $('.sidebar-inner'),
+        sidebarPadding = sidebarInner.innerWidth() - sidebarInner.width(),
+        sidebarSchemePadding = this.isPisces() || this.isGemini() ?
+          ((sidebarPadding * 2) + sidebarNavHeight + (CONFIG.sidebar.offset * 2) + this.getSidebarb2tHeight()) :
+          ((sidebarPadding * 2) + (sidebarNavHeight / 2));
+    return sidebarSchemePadding;
   }
+
+  /**
+   * Affix behaviour for Sidebar.
+   *
+   * @returns {Boolean}
+   */
+//  needAffix: function () {
+//    return this.isPisces() || this.isGemini();
+//  }
 };
 
 $(document).ready(function () {
 
   initSidebarDimension();
-
-  // Call the fixTOCJump function
-  NexT.utils.fixTOCJump();
 
   /**
    * Init Sidebar & TOC inner dimensions on all pages and for all schemes.
@@ -321,12 +320,12 @@ $(document).ready(function () {
 
     // Initialize Sidebar & TOC Width.
     var scrollbarWidth = NexT.utils.getScrollbarWidth();
-    if ($('.site-overview-wrap').height() > (document.body.clientHeight - NexT.utils.getSidebarSchemePadding())) {
-      $('.site-overview').css('width', 'calc(100% + ' + scrollbarWidth + 'px)');
-    }
-    if ($('.post-toc-wrap').height() > (document.body.clientHeight - NexT.utils.getSidebarSchemePadding())) {
-      $('.post-toc').css('width', 'calc(100% + ' + scrollbarWidth + 'px)');
-    }
+      if ($('.site-overview-wrap').height() > (document.body.clientHeight - NexT.utils.getSidebarSchemePadding())) {
+        $('.site-overview').css('width', 'calc(100% + ' + scrollbarWidth + 'px)');
+      }
+      if ($('.post-toc-wrap').height() > (document.body.clientHeight - NexT.utils.getSidebarSchemePadding())) {
+        $('.post-toc').css('width', 'calc(100% + ' + scrollbarWidth + 'px)');
+      }
 
     // Initialize Sidebar & TOC Height.
     updateSidebarHeight(document.body.clientHeight - NexT.utils.getSidebarSchemePadding());
